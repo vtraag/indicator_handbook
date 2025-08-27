@@ -1,7 +1,6 @@
 project:
   type: book
   output-dir: _book
-  execute-dir: project
 
 book:
   title: Open Science Impact Indicator Handbook
