@@ -18,7 +18,7 @@ title: Science-industry collaboration
 ::: {.callout collapse="true"}
 
 
-# History
+## History
 
 | Version | Revision date | Revision | Author |
 |--------------|--------------|-----------------|----------------------------|
@@ -29,13 +29,13 @@ title: Science-industry collaboration
 
 :::
 
-# Description
+## Description
 
 This indicator aims to capture the collaborative efforts between science (academia) and industry for open science (OS). It focuses on the exchange of knowledge and resources that facilitate the development of new technologies, processes, or products, thereby advancing scientific understanding and commercial applications. By measuring the interactions between these sectors, particularly those leading to tangible outputs like publications, OS outputs and patents, this indicator sheds light on how OS principles are being integrated into collaborative efforts and how these collaborations contribute to economic development and innovation.
 
-# Metrics
+## Metrics
 
-## \# / % of Joint Projects between Academia and Industry
+### \# / % of Joint Projects between Academia and Industry
 
 This metric measures the number or percentage of joint projects conducted between academia and industry. These projects could include research collaborations, funded grants, or other forms of cooperative endeavors. By capturing the extent of these joint activities, this metric offers insights into the intensity and nature of science-industry collaboration.
 
@@ -43,7 +43,7 @@ The inclusion of joint projects as a metric provides a broader view of collabora
 
 Joint projects are a key indicator of active collaboration between academia and industry. They often lead to significant innovations and knowledge transfer. Tracking these projects can also highlight the alignment between research priorities in academia and the practical needs of industry.
 
-### Measurement
+#### Measurement
 
 **Step 1: Data Collection.** Identify databases and repositories that catalog joint projects between academia and industry. Possible sources include:
 
@@ -67,27 +67,27 @@ Joint projects are a key indicator of active collaboration between academia and 
 -   Duration of the projects.
 -   Number of repeat collaborations.
 
-#### Existing datasources
+##### Existing datasources
 
-##### CORDIS
+###### CORDIS
 
 CORDIS provides detailed information on EU-funded projects, including participants, objectives, and funding details. It is a valuable source for identifying joint academia-industry projects. It also includes project metadata such as funding amount, duration, and collaboration types, making it an essential resource for this metric.
 
 Use CORDIS to filter projects using participant metadata to identify collaborations involving both academia and industry and analyze project metadata to gain insights into project size, type, and scope of collaboration.
 
-##### OpenAIRE Research Graph
+###### OpenAIRE Research Graph
 
 The OpenAIRE Research Graph is a comprehensive open access database that aggregates metadata on publications, research data, and project information across various disciplines. It includes details on open access publications and datasets, making it a valuable resource for tracking the output of academic-industry collaborations and their adherence to open science principles.
 
 Use the OpenAIRE Research Graph to query for project records involving co-participation by academia and industry. Use filtering within OpenAIRE to identify collaborative projects and their outputs. This includes analyzing the affiliations of participants and extracting project metadata.
 
-##### Research Organization Registry (ROR)
+###### Research Organization Registry (ROR)
 
 The Research Organization Registry (ROR) is a comprehensive, open, and community-driven registry that assigns unique identifiers to research organizations worldwide. It aims to solve the issue of institution name disambiguation by providing persistent identifiers, thus facilitating the accurate linking of research organizations to scholarly outputs and researchers. ROR is instrumental in tracking changes in organization names, mergers, and closures, thereby maintaining a current and accessible record of research entities.
 
 Use ROR metadata to categorize participants in projects identified via CORDIS or OpenAIRE. Query organization identifiers to distinguish between academia and industry and validate participant affiliations.\
 
-##### EU Community Innovation Survey (CIS)
+###### EU Community Innovation Survey (CIS)
 
 The EU Community Innovation Survey (CIS) is the reference survey on innovation in enterprises. It collects data on innovation activities, including collaboration, innovation expenditures, and outcomes. CIS focuses on key aspects such as product and process innovation, barriers to innovation, and innovation cooperation.
 
@@ -97,7 +97,7 @@ Use CIS data to analyze the innovation outcomes of joint projects. Specifically:
 -   Assess innovation outputs, such as product and process innovations, linked to joint projects.
 -   Examine funding sources, barriers, and drivers of innovation to contextualize collaborative efforts.
 
-## \# / % of Data and Code Repositories with Science-Industry Collaborations
+### \# / % of Data and Code Repositories with Science-Industry Collaborations
 
 This metric captures the number or percentage of data and code repositories that demonstrate collaborations between academia and industry. Such repositories are typically hosted on platforms like GitHub, GitLab, Huggingface, or other collaborative software and data-sharing platforms. By analyzing repository metadata and contributor affiliations, this metric provides insights into the extent of collaborative efforts in creating and maintaining shared scientific and technological resources.
 
@@ -111,7 +111,7 @@ Some limitations to this approach are:
 -   Contributors may not always disclose affiliations, leading to underestimation.
 -   Collaboration types and intensity may not be easily discernible from repository metadata alone
 
-### Measurement
+#### Measurement
 
 **Step 1: Data Collection.** Identify repositories from major platforms (e.g., GitHub, GitLab, Huggingface) that are relevant to science and industry collaboration. Use APIs and publicly available datasets to extract repository data, including:
 
@@ -135,9 +135,9 @@ Some limitations to this approach are:
 -   Examining the types of projects (e.g., datasets, software).
 -   Assessing the depth of collaboration (e.g., co-maintenance, joint contributions).
 
-#### Existing datasources
+##### Existing datasources
 
-##### GitHub / Gitlab / etc
+###### GitHub / Gitlab / etc
 
 GitHub is one of the most widely used platforms for hosting code repositories. It provides detailed metadata, including information about repository ownership, contributors, maintainers, and organizational affiliations. GitHub’s APIs allow users to query repositories and access public data, making it a critical resource for analyzing collaborative efforts.
 
@@ -149,7 +149,7 @@ Use Github or Gitlab to:
 -   Query contributor profiles to determine affiliations and validate collaborations.
 -   Analyze repository descriptions, README files, and tags to identify explicit mentions of partnerships.
 
-##### Huggingface
+###### Huggingface
 
 Huggingface specializes in hosting repositories for machine learning models, datasets, and related tools. It is popular among both academic researchers and industry practitioners, making it a unique platform for studying science-industry collaborations in cutting-edge technologies.
 
@@ -159,13 +159,13 @@ Use Huggingface to:
 -   Analyze repositories for co-maintenance by academic and industrial entities.
 -   Use metadata fields and descriptions to validate affiliations and collaborations.
 
-## \# / % of patents filed by industry in collaboration with academia that cites Open Science (OS) resources
+### \# / % of patents filed by industry in collaboration with academia that cites Open Science (OS) resources
 
 This metric assesses the extent to which industrial patents resulting from academic collaborations acknowledge or build upon OS resources, such as data, publications, or methodologies. A high number or percentage of such patents indicate a strong science-industry linkage and a productive exchange of OS resources.
 
 This metric is a good operationalization of the indicator because it provides a direct measure of the output of collaborative efforts. However, it may not capture the quality or impact of the collaboration. It differs from other metrics by focusing on legal intellectual property outcomes rather than purely academic outputs.
 
-### Measurement
+#### Measurement
 
 Utilize the PATSTAT dataset (<https://www.epo.org/en/searching-for-patents/business/patstat>) to identify patents filed by industry partners in collaboration with academic institutions. Examine the citations within these patents for references to papers or other resources that are recognized as open science inputs. Specifically, determine if these patents cite papers that contribute to new open science resources or artifacts.
 
@@ -191,9 +191,9 @@ By leveraging PATSTAT data, these metrics can provide a more comprehensive and m
 
 Other data source are Orbis IP, The Lens, EUIPO. Please refer to the “Innovation output” indicator to further details on The Lens and Orbis IP. The choice among the different resources depends on the information to be processed. For instance, Orbis IP includes information on patent authors, which is not available in other data sources, and also offers the possibility to link companies to balance sheet data that might be useful for a comprehensive analysis of the economic growth of companies.
 
-#### Existing datasources
+##### Existing datasources
 
-##### PATSTAT
+###### PATSTAT
 
 PATSTAT is a global patent statistical database maintained by the European Patent Office (EPO) that offers a detailed set of patent data, including bibliographic data, citations, family links, and legal status information for patents across multiple jurisdictions. It is designed to facilitate statistical analysis on patents and their citations to understand trends in innovation.
 
@@ -203,7 +203,7 @@ To calculate the number / percentage of patents filed by industry in collaborati
 2.  Examine the citations within these patents for references to open science inputs, such as open access publications or datasets.
 3.  Count the patents that cite these open science inputs and calculate this as a percentage of the total patents analyzed.
 
-##### OpenAIRE Research Graph
+###### OpenAIRE Research Graph
 
 The OpenAIRE Research Graph is a comprehensive open access database that aggregates metadata on publications, research data, and project information across various disciplines. It includes details on open access publications and datasets, making it a valuable resource for tracking the output of academic-industry collaborations and their adherence to open science principles.
 
@@ -212,7 +212,7 @@ To complement PATSTAT data, use the OpenAIRE Research Graph to identify which of
 1.  Extracting publication references from identified patents in PATSTAT.
 2.  Querying the OpenAIRE Research Graph to determine which cited publications are open access.
 
-##### Research Organization Registry (ROR)
+###### Research Organization Registry (ROR)
 
 The Research Organization Registry (ROR) is a comprehensive, open, and community-driven registry that assigns unique identifiers to research organizations worldwide. It aims to solve the issue of institution name disambiguation by providing persistent identifiers, thus facilitating the accurate linking of research organizations to scholarly outputs and researchers. ROR is instrumental in tracking changes in organization names, mergers, and closures, thereby maintaining a current and accessible record of research entities.
 
@@ -225,9 +225,9 @@ Utilizing the ROR API to distinguish between academic institutions and industry 
 
 There may be limitations in the coverage of certain types of organizations and the evolving nature of the ROR dataset as new organizations are added or existing records are updated.
 
-#### Existing methodologies
+##### Existing methodologies
 
-##### SciNoBo Research Artifact Analysis (RAA) Tool
+###### SciNoBo Research Artifact Analysis (RAA) Tool
 
 This is an automated tool [@stavropoulos2023], leveraging Deep Learning and Natural Language Processing techniques to identify research artifacts (datasets, software) mentioned in the scientific text and extract metadata associated with them, such as name, version, license, etc. This tool can also classify whether the dataset has been reused or created by the authors of the scientific text.
 
@@ -235,11 +235,11 @@ To measure the proposed metric, the tool can be used to identify the reused and 
 
 One limitation of this methodology is that it may not capture all instances of research artifacts if they are not explicitly mentioned in the scientific text. Additionally, the machine learning algorithms used by the tool may not always accurately classify whether a research artifact has been reused or created and may require manual validation.
 
-## \# / % of Publications Produced by Academia in Collaboration with Industry that Cites Open Science Resources
+### \# / % of Publications Produced by Academia in Collaboration with Industry that Cites Open Science Resources
 
 This metric evaluates how often publications resulting from academia-industry collaborations incorporate or reference open science artifacts. It signifies the degree to which collaborative research between these sectors utilizes open science as a foundation. It highlights a different aspect of collaboration by focusing on scholarly publications. Similar to the first metric, it is a measure of output but from an academic perspective.
 
-### Measurement
+#### Measurement
 
 Access OA publications from comprehensive databases (e.g., OpenAIRE Research Graph), scanning for those with co-authors from both academia and industry. Analyze these publications for citations or mentions of open science inputs, indicating the reuse, or creation of open science artifacts.
 
@@ -257,9 +257,9 @@ Access OA publications from comprehensive databases (e.g., OpenAIRE Research Gra
 
 **Step 6: Reporting and Analysis**. Analyze the data to extract insights on the extent and nature of open science in academia-industry collaborations. Document any limitations encountered, such as incomplete citation records or inaccuracies in affiliation data.
 
-#### Existing datasources
+##### Existing datasources
 
-##### OpenAIRE Research Graph
+###### OpenAIRE Research Graph
 
 The OpenAIRE Research Graph is a comprehensive open access database that aggregates metadata on publications, research data, and project information across various disciplines. It includes details on open access publications and datasets, making it a valuable resource for tracking the output of academic-industry collaborations and their adherence to open science principles.
 
@@ -270,7 +270,7 @@ To calculate the number / percentage of publications produced by academia in col
 3.  For each publication, examine the references field to identify citations of datasets or software.
 4.  Count and calculate the percentage of these publications out of the total number of academia-industry collaborative publications identified in the dataset.
 
-##### Research Organization Registry (ROR)
+###### Research Organization Registry (ROR)
 
 The Research Organization Registry (ROR) is a comprehensive, open, and community-driven registry that assigns unique identifiers to research organizations worldwide. It aims to solve the issue of institution name disambiguation by providing persistent identifiers, thus facilitating the accurate linking of research organizations to scholarly outputs and researchers. ROR is instrumental in tracking changes in organization names, mergers, and closures, thereby maintaining a current and accessible record of research entities.
 
@@ -283,9 +283,9 @@ Utilizing the ROR API to distinguish between academic institutions and industry 
 
 There may be limitations in the coverage of certain types of organizations, potential inaccuracies in metadata, and the evolving nature of the ROR dataset as new organizations are added or existing records are updated.
 
-#### Existing methodologies
+##### Existing methodologies
 
-##### SciNoBo Research Artifact Analysis (RAA) Tool
+###### SciNoBo Research Artifact Analysis (RAA) Tool
 
 This is an automated tool [@stavropoulos2023], leveraging Deep Learning and Natural Language Processing techniques to identify research artifacts (datasets, software) mentioned in the scientific text and extract metadata associated with them, such as name, version, license, etc. This tool can also classify whether the dataset has been reused or created by the authors of the scientific text.
 
@@ -293,21 +293,21 @@ To measure the proposed metric, the tool can be used to identify the reused and 
 
 One limitation of this methodology is that it may not capture all instances of research artifacts if they are not explicitly mentioned in the scientific text. Additionally, the machine learning algorithms used by the tool may not always accurately classify whether a research artifact has been reused or created, and may require manual validation.
 
-## Existing datasources (applicable to all metrics)
+### Existing datasources (applicable to all metrics)
 
-### ORBIS
+#### ORBIS
 
 ORBIS is a global database that contains detailed information on companies, including financial data, ownership structures, and industry classifications. It is particularly valuable for tracking established firms and linking companies to their activities and affiliations. ORBIS provides insights into company performance, size, and economic connections, making it ideal for robust analysis of industry players.
 
 ORBIS can be utilized to validate and categorize company affiliations in academic-industry collaborations. It allows users to verify company profiles and gather detailed information such as industry sector, revenue, and geographic presence. This data is essential for distinguishing industry participants from academic institutions and for analyzing the economic dimensions of collaborations. ORBIS is particularly useful when deeper financial or structural insights into the companies involved are required.
 
-### Crunchbase
+#### Crunchbase
 
 Crunchbase is a comprehensive platform that aggregates data on companies, founders, and their funding activities. It includes detailed metadata on company profiles, such as industry, location, funding rounds, and associated personnel. Crunchbase provides extensive information about startups, established firms, and their interconnections, making it a valuable resource for identifying industry affiliations.
 
 Crunchbase can be used to identify the names and metadata of companies involved in academic-industry collaborations. By cross-referencing organizations from research outputs or project data, researchers can determine whether affiliations are from industry. Crunchbase’s metadata can also help uncover patterns such as funding sources, company size, and sectoral focus, which are crucial for understanding the scope and impact of collaborations.
 
-# Notes {#notes .unnumbered}
+## Notes {#notes .unnumbered}
 
 The proposed metrics offer a solid foundation for measuring the collaboration between science and industry, however some aspects require further exploration:
 

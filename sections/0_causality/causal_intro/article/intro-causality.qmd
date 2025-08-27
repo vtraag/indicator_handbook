@@ -37,7 +37,7 @@ code-fold: true
 code-summary: "Show the code"
 ---
 
-# Introduction
+## Introduction
 
 Causal questions are pervasive in science studies: what are the effects of peer review on the quality of publications [@goodman_manuscript_1994]?
 What is the influence of mentorship on protegees success [@malmgren_role_2010]?
@@ -64,7 +64,7 @@ We avoid technicalities, so that the core ideas can be understood even with litt
 We first introduce the general approach, which we then briefly illustrate in three short case studies.
 In addition, we provide some extensive descriptions of approaching causality in three specific case studies in academic impact (on the effect of [Open Data on citations](../../open_data_citation_advantage.qmd)), in [societal impact](../../social_causality.qmd) and in economic impact (on the effect of [Open Data on Cost Savings](../../open_data_cost_savings.qmd)).
 
-## The fundamental problem
+### The fundamental problem
 
 The fundamental problem in causal inference is that we never have the answer to the "what-if" question.
 For instance, suppose that a professor received tenure.
@@ -89,7 +89,7 @@ This is a relatively straightforward approach to causal inference with a clear v
 It should allow researchers to reason and discuss about their causal thinking more easily.
 We explain structural causal models in more detail in the next section.
 
-# Causal inference - a brief introduction {#sec-causal-inference}
+## Causal inference - a brief introduction {#sec-causal-inference}
 
 Structural causal models focus, as the name suggests, on the structure of causality, not on the exact details.
 That is, structural causal models are only concerned with whether a certain factor is causally affected by another factor, not whether that effect is linear, exponential, or an "interaction" with some other effects.
@@ -141,7 +141,7 @@ Many studies have been conducted on the potential impacts Open Science might hav
 However, studies on specific types of Open Science impact, such as those on the Open Access citation advantage, often lack a clear understanding of causal pathways and thus fail to develop a meaningful strategy for estimating causal effects.
 Our introduction shows how causal inference could be leveraged to improve these and similar studies.
 
-## Introducing DAGs
+### Introducing DAGs
 
 ![Hypothetical structural causal model on Open Science](figures/overall_model.svg){#fig-overall-model fig-align="center"}
 
@@ -188,7 +188,7 @@ There might be additional relevant considerations, but it should provide a reaso
 
 A useful tool for working with DAGs is called `dagitty`, which is available from the website <http://dagitty.net>, which also contains many useful pointers to additional introductions and tutorials.
 
-## Using DAGs to identify causal effects
+### Using DAGs to identify causal effects
 
 Most scholars will be acquainted with problems of confounding effects, and that we somehow need to "control" for confounding effects.
 But there are also other factors besides confounders.
@@ -204,7 +204,7 @@ As the popular adage goes, correlation does not imply causation.
 That is, $X$ and $Y$ might be correlated, even if $X$ does not affect $Y$.
 For instance, in [@fig-overall-model] *Reproducibility* and *Published* are correlated because both are affected by *Open data*, but *Reproducibility* does not have any causal effect on *Published* or vice versa.
 
-### Paths in DAGs
+#### Paths in DAGs
 
 In DAGs, we think of correlation and causation in terms of paths between variables.
 In a graph, a path between two nodes consists of a series of connected nodes.
@@ -268,7 +268,7 @@ Other approaches include for example so-called matching procedures.
 When matching cases on a certain variable, we only compare cases which are the same (or similar) on that variable.
 Finally, in science studies, indicators are frequently "normalised", especially citation indicators [@waltman_field_2019], which amounts to conditioning on the variables used for the normalisation.
 
-### Confounders, colliders and mediators
+#### Confounders, colliders and mediators
 
 We can discern three types of variables: a confounder, a collider and a mediator.
 Whether a variable $Z$ is a confounder, a collider or a mediator depends on how $Z$ is connected on a path between $X$ and $Y$.
@@ -318,7 +318,7 @@ If we cannot condition on other variables, for example because we did not collec
     If we condition on *Open data* and *Rigour* all non-causal paths are closed, meaning that we then expect to find no correlation.
     If, in contrast, we still find a non-zero correlation after conditioning on *Open data* and *Rigour*, it means our DAG is incorrect, and we need to revise it.
 
-# Case studies
+## Case studies
 
 In this section, we apply the concepts introduced above to potential research questions, demonstrating how to estimate causal effects.
 We show how a researcher can use a hypothesised causal model of the phenomenon under study to estimate causal effects.
@@ -346,9 +346,9 @@ From that point of view, using simpler methods while paying proper attention to 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
-# we need to set another output device for rendering to PDF. 
-# otherwise the figure fonts are mangled
-# In addition, we hide code output, since it cannot be folded in the PDF
+## we need to set another output device for rendering to PDF. 
+## otherwise the figure fonts are mangled
+## In addition, we hide code output, since it cannot be folded in the PDF
 if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
   if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "latex") {
     knitr::opts_chunk$set(dev = "cairo_pdf", echo = FALSE)
@@ -357,35 +357,35 @@ if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
 ```
 
 ```{r, echo=FALSE}
-# explicitly list libraries to load as dependency for renv
+## explicitly list libraries to load as dependency for renv
 library(quarto)
 library(pdftools)
 library(downlit)
-# end renv dependency
+## end renv dependency
 
 library(dplyr)
 library(here)
 
-# recalculate true effects
+## recalculate true effects
 library(logitnorm)
 
-# plotting
+## plotting
 library(ggplot2)
 library(ggdist)
 library(broom)
 library(hrbrthemes)
 library(ggrepel)
 
-# stacking plots and DAGs
+## stacking plots and DAGs
 library(patchwork)
 library(magick)
 library(ggplotify)
 
-# pretty tables
+## pretty tables
 library(modelsummary)
 library(flextable)
 
-# some helper functions
+## some helper functions
 source(here("sections/0_causality/causal_intro/src/functions.R"))
 ```
 
@@ -393,7 +393,7 @@ source(here("sections/0_causality/causal_intro/src/functions.R"))
 extrafont::loadfonts(device = "all")
 theme_set(theme_ipsum_rc(plot_margin = margin(15, 15, 15, 15)))
 
-# colour palette
+## colour palette
 pal <- colorspace::diverge_hcl(palette = "Tropic", n = 2)
 highlight_col <- pal[2]
 base_col <- pal[1]
@@ -406,24 +406,24 @@ sigma <- get_coefs("sigma", "none")
 ```
 
 ```{r, echo=FALSE}
-#| label: tbl-coefs
-#| tbl-cap: "Coefficients for simulated data"
+##| label: tbl-coefs
+##| tbl-cap: "Coefficients for simulated data"
 
-# We might want to split this into three segments: intercept, coefficient, sigma
+## We might want to split this into three segments: intercept, coefficient, sigma
 coefs %>%
   rename(From = from, To = to, Coefficient = coef) %>%
   knitr::kable()
 ```
 
-## The effect of Rigour on Reproducibility
+### The effect of Rigour on Reproducibility
 
 To provide a first impression of the simulated data, and some intuition of how we can estimate causal effects, we first analyse the effects of *Rigour* and *Open data* on *Reproducibility* (see @fig-rigour-reproducibility).
 *Rigour* and *Reproducibility* are clearly positively correlated: higher *Rigour* is associated with higher *Reproducibility*.
 We also see that the overall level of reproducibility tends to be higher if there is *Open Data*.
 
 ```{r rigour-on-reproducibility, message=FALSE, fig.width=4, fig.height=3.5}
-#| label: fig-rigour-reproducibility
-#| fig-cap: "Effect of *Rigour* and *Open data* on *Reproducibility*"
+##| label: fig-rigour-reproducibility
+##| fig-cap: "Effect of *Rigour* and *Open data* on *Reproducibility*"
 df %>% 
   mutate(open_data = case_when(!open_data ~ "Closed data",
                                TRUE ~ "Open data")) %>% 
@@ -450,14 +450,14 @@ We can estimate the total causal effect of *Rigour* on *Reproducibility* simply 
 $$\text{Reproducibility} \sim \text{Rigour}$$
 
 ```{r}
-# compute the theoretical effect of rigour on reproducibility
+## compute the theoretical effect of rigour on reproducibility
 field1 <- function(x) x * plogis(get_coefs("intercept", "open_data") + get_coefs("rigour", "open_data") * x + get_coefs("field", "open_data")[[1]]) * dnorm(x)
 field2 <- function(x) x * plogis(get_coefs("intercept", "open_data") + get_coefs("rigour", "open_data") * x + get_coefs("field", "open_data")[[2]]) * dnorm(x)
 
 rigour_effect_on_reproducibility <- get_coefs("rigour", "reproducibility") + get_coefs("open_data", "reproducibility") * mean(c(integrate(field1, -Inf, Inf)$value, integrate(field2, -Inf, Inf)$value))
 
 m_rigour_reprod <- lm(reproducibility ~ rigour, data = df)
-# summary(m_rigour_reprod)
+## summary(m_rigour_reprod)
 ```
 
 Since we simulated the data, we can calculate the "true" causal effect, which in this case is `r round(rigour_effect_on_reproducibility, 2)` (see [Appendix -@sec-appendix-rigour-on-reproducibility] for details).
@@ -467,13 +467,13 @@ We deliberately chose a moderate sample size of `r nrow(df)` for our simulation.
 Point estimates derived from the simulated data thus only approximate the theoretical values.
 
 ```{r rigour-on-reproducibility, fig.height=2.5, fig.width=4.5}
-#| label: fig-rigour-on-reproducibility
-#| fig-cap: "Effect of *Rigour* on *Reproducibility*, estimated with a simple linear regression."
+##| label: fig-rigour-on-reproducibility
+##| fig-cap: "Effect of *Rigour* on *Reproducibility*, estimated with a simple linear regression."
 model_coefs <- tidy(m_rigour_reprod, conf.int = TRUE) %>% 
     mutate(term = case_match(term, 
                            "rigour" ~ "Rigour"))
 
-# plot
+## plot
 text_label <- tibble(x = c(rigour_effect_on_reproducibility),
                      y = c("Rigour"),
                      label = "True effect")
@@ -506,7 +506,7 @@ Second, sound causal inference does not necessarily involve controlling for many
 In some cases, a simple regression might be all that is needed.
 Not all causal effects are equally straightforward to measure, as the next examples show.
 
-## The effect of Open data on Citations {#sec-open-data-on-citations}
+### The effect of Open data on Citations {#sec-open-data-on-citations}
 
 Suppose we are interested in the total causal effect of *Open data* on *Citations*.
 Previous research on the topic indicates that articles sharing data tend to receive more citations [@piwowar2007; @piwowar2013; @kwon2021].
@@ -532,7 +532,7 @@ $$
 $$
 
 ```{r}
-# Calculate the theoretically expected causal effect of open_data on citations
+## Calculate the theoretically expected causal effect of open_data on citations
 theoretical_effect_OD_on_published <- momentsLogitnorm(
   mu = get_coefs("intercept", "published") + get_coefs("open_data", "published"), 
   sigma = sigma
@@ -544,18 +544,18 @@ theoretical_effect_OD_on_published <- theoretical_effect_OD_on_published["mean"]
 open_data_effect_on_citations <- get_coefs("open_data", "data_reuse") * get_coefs("data_reuse", "citations") +
                                 theoretical_effect_OD_on_published * get_coefs("published", "citations")
 
-# # theoretical effect
-# open_data_effect_on_citations
+## # theoretical effect
+## open_data_effect_on_citations
 
 m_od_citations <- lm(citations ~ open_data + field + rigour, data = df)
 ```
 
 ```{r open-data-on-citations, fig.height=5, fig.width=8}
-#| label: fig-od-on-citations
-#| fig-cap: "Effect of Open data on Citations. A: DAG illustrating which variables to condition on (or not). Open nodes are marked in green, closed nodes are marked in orange, and nodes that are open in one path but closed in another are marked semi-green and semi-orange. Nodes that are controlled for are marked by a thick outline. B: Effect estimate (regression coefficients with 95%-CI)."
-#| fig-env: "figure*"
+##| label: fig-od-on-citations
+##| fig-cap: "Effect of Open data on Citations. A: DAG illustrating which variables to condition on (or not). Open nodes are marked in green, closed nodes are marked in orange, and nodes that are open in one path but closed in another are marked semi-green and semi-orange. Nodes that are controlled for are marked by a thick outline. B: Effect estimate (regression coefficients with 95%-CI)."
+##| fig-env: "figure*"
 
-# plot
+## plot
 model_coefs <- tidy(m_od_citations, conf.int = TRUE) %>% 
   mutate(term = case_match(term, 
                            "rigour" ~ "Rigour",
@@ -580,7 +580,7 @@ p <- model_coefs %>%
   theme_ipsum_rc(grid = "YX", base_size = 10, axis_title_size = 10 ) +
   theme(plot.margin = margin(10, 10, 10, 10))
 
-# plot both figures
+## plot both figures
 dag_grob <- image_read_pdf(here("sections/0_causality/causal_intro/article/figures/model_open_data_citations.pdf")) %>%
   as.grob()
 
@@ -617,7 +617,7 @@ In that case, it is irrelevant whether there are any other confounding effects b
 The discussion here focuses specifically on illustrating the general principles.
 In the case study on the effect of [Open Data on citations](../../open_data_citation_advantage.qmd) we examine this in greater detail and with a higher degree of realism.
 
-## The effect of Open data on Reproducibility {#sec-open-data-on-repro}
+### The effect of Open data on Reproducibility {#sec-open-data-on-repro}
 
 Suppose we are interested in the causal effect of *Open data* on *Reproducibility*.
 Such an effect is often assumed in debates on how to increase the reproducibility across the scholarly literature [@molloy2011].
@@ -626,7 +626,7 @@ In our DAG in @fig-overall-model, we assume there is a causal effect of *Open da
 The causal effect is direct, there is no indirect effect of *Open data* on *Reproducibility*.
 Although the DAG does not specify these parametric assumptions, in our simulation, the effect is positive.
 
-### Conditioning on a collider may bias estimates
+#### Conditioning on a collider may bias estimates
 
 Many bibliometric databases predominantly cover research published in journals or conferences, which result from a clear selection process.
 Science studies frequently relies on such bibliometric databases for analysis.
@@ -639,9 +639,9 @@ The level of *Reproducibility* is higher for research published in journals with
 This might seem counterintuitive, since the causal effect of *Open data* on *Reproducibility* is in fact positive in our model.
 
 ```{r open-data-on-reproducibility-published, fig.height=3, fig.width=5}
-#| label: fig-od-reprod-pub
-#| fig-cap: "Reproducibility of research published in journals with and without *Open data*. Displaying means with 95%-CI."
-# plot
+##| label: fig-od-reprod-pub
+##| fig-cap: "Reproducibility of research published in journals with and without *Open data*. Displaying means with 95%-CI."
+## plot
 
 df %>%
   filter(published) %>%
@@ -684,7 +684,7 @@ That is, using the "like with like" intuition, we might be inclined to condition
 If we do so, we bias the estimation of the causal effect of *Open data* on *Reproducibility*, as explained above.
 In this case, comparing "like with like" may create problems.
 
-### Identifying the causal effect
+#### Identifying the causal effect
 
 As explained, conditioning on the collider *Published* opens the non-causal path *Open data* $\rightarrow$ *Published* $\leftarrow$ *Rigour* $\rightarrow$ *Reproducibility*.
 This non-causal path is open because *Published* is open (because it is a collider that is conditioned on), and because *Rigour* is open (because it is a confounder that is not conditioned on).
@@ -699,19 +699,19 @@ The regression model is thus $$\textrm{Reproducibility} \sim \textrm{Open data} 
 
 ```{r}
 open_data_effect_on_reproducibility <- get_coefs("open_data", "reproducibility")
-# open_data_effect_on_reproducibility
+## open_data_effect_on_reproducibility
 
 m_od_reprod <- lm(reproducibility ~ open_data + rigour,
                   data = df %>% filter(published == TRUE))
-# summary(m_od_reprod)
-# coef(m_od_reprod)["open_dataTRUE"]
+## summary(m_od_reprod)
+## coef(m_od_reprod)["open_dataTRUE"]
 ```
 
 ```{r open-data-on-reproducibility, fig.height=5, fig.width=8}
-#| label: fig-od-reprod
-#| fig-cap: "Effect of *Open data* on *Reproducibility*. A: DAG illustrating which variables to condition on (or not). Open nodes are marked in green, closed nodes are marked in orange, and nodes that are open in one path but closed in another are marked semi-green and semi-orange. Nodes that are controlled for are marked by a thick outline. B: Effect estimate (regression coefficients with 95%-CI)."
-#| fig-env: "figure*"
-# plot
+##| label: fig-od-reprod
+##| fig-cap: "Effect of *Open data* on *Reproducibility*. A: DAG illustrating which variables to condition on (or not). Open nodes are marked in green, closed nodes are marked in orange, and nodes that are open in one path but closed in another are marked semi-green and semi-orange. Nodes that are controlled for are marked by a thick outline. B: Effect estimate (regression coefficients with 95%-CI)."
+##| fig-env: "figure*"
+## plot
 model_coefs <- tidy(m_od_reprod, conf.int = TRUE) %>% 
     mutate(term = case_match(term, 
                            "rigour" ~ "Rigour",
@@ -740,7 +740,7 @@ p <- model_coefs %>%
   theme(plot.margin = margin(10, 10, 10, 10)) +
   scale_x_continuous(limits = c(0, 1.5))
 
-# plot both figures
+## plot both figures
 dag_grob <- image_read_pdf(here("sections/0_causality/causal_intro/article/figures/model_open_data_on_reproducibility.pdf")) %>%
   as.grob() 
 
@@ -771,7 +771,7 @@ If there were an additional confounder between *Published* and *Data reuse*, thi
 This shows how making the DAG richer and more nuanced does not necessarily change the identification.
 Of course, other changes to the DAG do change the identification: if there were another confounder between *Open data* and *Reproducibility*, we would need to control for it.
 
-### Interpreting regression coefficients and measurement problems
+#### Interpreting regression coefficients and measurement problems
 
 Often, researchers not only interpret the coefficient that is the subject of their main research question, but also interpret the other coefficients.
 However, it is easy to draw wrong conclusions for those other coefficients, and interpret them incorrectly as causal effects.
@@ -799,7 +799,7 @@ We cannot directly control for *Rigour*, and we can only control for *Rigour mea
 If *Rigour measurement* would additionally be affected by other factors, such as *Published*, this might introduce additional complications.
 Taking measurement seriously can expose additional challenges that need to be addressed [@mcelreath2020, Chapter 15].
 
-# Discussion
+## Discussion
 
 The study of science is a broad field with a variety of methods.
 Academics have employed a range of perspectives to understand science's inner workings, driven by the field's diversity in researchers' disciplinary backgrounds [@sugimoto2011; @liu2023].
@@ -812,7 +812,7 @@ Both descriptive and predictive work might be able to inform discussions about p
 However, without making causal thinking explicit, they can easily lead to wrong interpretations and conclusions.
 We covered several related potential issues in data analysis, such as the Table 2 fallacy (see @sec-open-data-on-repro) or the "causal salad" approach (see @sec-open-data-on-citations).
 
-## The case for causal thinking
+### The case for causal thinking
 
 Quantitative research in science studies should make a clear distinction between prediction and causation.
 For example, if we observe that preregistered studies are more likely to be reproducible, we might use this information to predict which studies are more likely to be reproducible.
@@ -847,7 +847,7 @@ If we find no empirical support for these testable implications, we might need t
 Finding empirical support for testable implications still does not imply that our assumptions are correct; other assumptions might have similar testable implications.
 Indeed, we already emphasised this in the context of the DAGs: we cannot say whether a DAG is correct, but we might be able to say whether a DAG is incorrect.
 
-## Going beyond---why causal thinking is useful even if causal inference is impossible
+### Going beyond---why causal thinking is useful even if causal inference is impossible
 
 In practice, it might not always be possible to estimate a causal effect, because some variables are not observed in a study, or might even be unobservable [@rohrer2018].
 We believe that making causal thinking explicit is still highly beneficial to the broader research community in such cases.
@@ -880,7 +880,7 @@ For example, when developing an interview guide to study a particular phenomenon
 Furthermore, even if qualitative data cannot easily quantify the precise strength of a causal relationship, it may corroborate the structure of a causal model.
 Ultimately, combining quantitative causal identification strategies with direct qualitative insights on mechanisms can lead to more comprehensive evidence [@munafò2018; @tashakkori2021], strengthening and validating our collective understanding of science.
 
-# Theoretical effect of Rigour on Reproducibility {#sec-appendix-rigour-on-reproducibility .appendix}
+## Theoretical effect of Rigour on Reproducibility {#sec-appendix-rigour-on-reproducibility .appendix}
 
 There is a direct effect of *Rigour* on *Reproducibility* and a indirect effect, mediated by *Open data*.
 Let $X$ be *Rigour*, $Z$ *Open Data* and $Y$ *Reproducibility*.
@@ -894,7 +894,7 @@ Unfortunately, this does not seem to have an analytical solution, so we numerica
 
 The total causal effect of *Rigour* on *Reproducibility* is very close to the direct causal effect of *Rigour* on *Reproducibility* (which is `r get_coefs("rigour", "reproducibility")`), because the indirect effect via *Rigour* $\rightarrow$ *Open data* is small.
 
-# Theoretical effect of Open data on citations {#sec-appendix-od-citations .appendix}
+## Theoretical effect of Open data on citations {#sec-appendix-od-citations .appendix}
 
 There are two causal paths of the effect of *Open data* on *Citations*.
 The first causal path is mediated by *Data reuse* and the second is mediated by *Published*.
@@ -911,7 +911,7 @@ The change in $Y$, i.e. $\Delta Y$, relative to changing $X$, i.e. $\Delta X$, f
 The second part is more convoluted, since $P$ is a logistic distribution of a normal variable.
 For that reason, we calculate $\frac{\Delta P(X)}{\Delta X}$ numerically using `logitnorm::momentsLogitnorm` (version 0.8.38) in R.
 
-# Validation of argument against stepwise regression {#sec-stepwise-regression .appendix}
+## Validation of argument against stepwise regression {#sec-stepwise-regression .appendix}
 
 In @sec-open-data-on-citations, we claimed that stepwise regression would suggest to include the mediating variables *Published* and *Open data* and to remove Open Data from the regression model.
 The output below demonstrates this behaviour.
@@ -935,7 +935,7 @@ The final model is then as follows:
 summary(step_model)
 ```
 
-# The case against causal salad {#sec-causal-salad .appendix}
+## The case against causal salad {#sec-causal-salad .appendix}
 
 @tbl-causal-salad illustrates the result of the 'causal salad' approach of including all variables.
 Because this model controls for mediators, the effect of *Open data* on *Citations* appears to be zero.
@@ -950,8 +950,8 @@ caption <- paste0(
 ```
 
 ```{r}
-#| label: tbl-causal-salad
-#| tbl-cap: !expr caption
+##| label: tbl-causal-salad
+##| tbl-cap: !expr caption
 
 named_models <- list("Correct model" = m_od_citations,
                      "'Causal salad' model" = full_model)
