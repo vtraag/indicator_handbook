@@ -131,8 +131,9 @@ website:
 
 format:
   html:
+    shift-heading-level-by: -1
     toc: true
-    toc-expand: 3
+    toc-expand: 2
     theme:
       - cosmo
       - theme/style.scss
